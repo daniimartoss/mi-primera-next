@@ -1,1 +1,2 @@
 - Día 1: aprendiendo Git
+- Practicando commits
