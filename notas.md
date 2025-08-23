@@ -2,3 +2,4 @@
 - Practicando commits
 - linea desde la rama feat
 - nota paralela en main(B)
+ nota desde otra ram
