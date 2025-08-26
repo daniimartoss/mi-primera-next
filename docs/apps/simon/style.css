@@ -1,0 +1,54 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #9e8c;
+}
+
+.cuadro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* 2 columnas iguales */
+    grid-template-rows: 1fr 1fr;     /* 2 filas iguales */
+    gap: 10px;                       /* espacio entre botones */
+    width: 300px;                    /* ancho del contenedor */
+    height: 300px;                   /* alto del contenedor */
+}
+
+.verde, .amarillo, .rojo, .azul {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.empezar {
+    margin: 20px;
+}
+
+.activo {
+    box-shadow: 0 0 20px #6173ff;
+
+}
+
+.verde { background-color: green; }
+.azul { background-color: blue; }
+.rojo { background-color: red; }
+.amarillo { background-color: yellow; }
+
+#titulo {
+    margin-bottom: 0px;
+}
+
+#nivel {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#mensaje {
+    margin: 0;
+}
