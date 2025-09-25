@@ -1,7 +1,5 @@
 "use client";
 
-import { count } from "console";
-
 type ButtonProps = {
     text: string;
     onClick?: () => void;

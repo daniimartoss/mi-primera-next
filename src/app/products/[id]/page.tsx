@@ -1,10 +1,15 @@
+"use client";
+
+import { useParams } from "next/navigation";
+
 const productos = [
 { id: 1, nombre: "Champú", precio: 7 },
 { id: 2, nombre: "Cera", precio: 5 },
 { id: 3, nombre: "Peine", precio: 3 },
 ];
 
-export default function ProductsPage({ params }: { params: { id: string } }) {
+export default function ProductsPage() {
+const params = useParams();
 const id = Number(params.id);
 
 const producto = productos.find((e) => e.id === id);

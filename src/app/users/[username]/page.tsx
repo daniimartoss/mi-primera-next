@@ -1,13 +1,12 @@
 // app/users/[username]/page.tsx
-// (Server Component por defecto; no hace falta "use client")
+"use client";
 
-export default function UserPage({
-params,
-}: {
-params: { username: string };
-}) {
+import { useParams } from "next/navigation";
+
+export default function UserPage() {
 // 1) Extraemos el parámetro dinámico de la URL
-const { username } = params;
+const params = useParams();
+const username = params.username as string;
 
 // 2) Devolvemos JSX con ese dato
 return (

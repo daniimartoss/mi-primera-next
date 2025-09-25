@@ -1,11 +1,14 @@
 
+"use client";
+
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+
 const productos = ["champu", "cera", "peine"];
 
-
-export default function SearchPage(
-    {searchParams,} : {searchParams: {q?: string};}) {
-
-        const query = searchParams.q?.toLowerCase() || "";
+function SearchContent() {
+    const searchParams = useSearchParams();
+    const query = searchParams.get('q')?.toLowerCase() || "";
 
 
         const resultados = productos.filter( s => s.includes(query));
@@ -23,6 +26,12 @@ export default function SearchPage(
 
             </div>
         )
+}
 
-
-    }
+export default function SearchPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <SearchContent />
+        </Suspense>
+    );
+}

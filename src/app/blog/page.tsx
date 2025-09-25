@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import Button from "../components/Button";
 
 const posts = [
@@ -8,8 +9,9 @@ const posts = [
 "Post 6", "Post 7", "Post 8", "Post 9", "Post 10"
 ];
 
-export default function BlogPage({ searchParams }: { searchParams: { page?: string } }) {
-const page = Number(searchParams.page) || 1;
+function BlogContent() {
+const searchParams = useSearchParams();
+const page = Number(searchParams.get('page')) || 1;
 const router = useRouter();
 
 const min = (page - 1) * 3;
@@ -54,4 +56,12 @@ return (
     </p>
     </div>
 );
+}
+
+export default function BlogPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <BlogContent />
+        </Suspense>
+    );
 }

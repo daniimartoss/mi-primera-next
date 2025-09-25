@@ -15,9 +15,10 @@ Devuelve una reserva concreta
 =========================== */
 export async function GET(
 _req: Request,
-{ params }: { params: { id: string } }
+{ params }: { params: Promise<{ id: string }> }
 ) {
-const id = parseId(params.id);
+const resolvedParams = await params;
+const id = parseId(resolvedParams.id);
 if (id === null) {
     return NextResponse.json({ error: "ID inválido" }, { status: 400 });
 }
@@ -37,9 +38,10 @@ Body JSON: { cliente?: string, servicio?: string, fecha?: string(ISO) }
 =========================== */
 export async function PUT(
 req: Request,
-{ params }: { params: { id: string } }
+{ params }: { params: Promise<{ id: string }> }
 ) {
-const id = parseId(params.id);
+const resolvedParams = await params;
+const id = parseId(resolvedParams.id);
 if (id === null) {
     return NextResponse.json({ error: "ID inválido" }, { status: 400 });
 }
@@ -88,9 +90,10 @@ Borra una reserva
 =========================== */
 export async function DELETE(
 _req: Request,
-{ params }: { params: { id: string } }
+{ params }: { params: Promise<{ id: string }> }
 ) {
-const id = parseId(params.id);
+const resolvedParams = await params;
+const id = parseId(resolvedParams.id);
 if (id === null) {
     return NextResponse.json({ error: "ID inválido" }, { status: 400 });
 }

@@ -2,23 +2,21 @@
 "use client";
 
 import Button from "../components/Button";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import GoToSearch from "../components/GoToSearch";
 
-export default function AboutPage(
-    {searchParams,} : {searchParams: {q?: string};}) {
-
-const query = Number(searchParams.q) || 0;
+function AboutContent() {
+    const searchParams = useSearchParams();
+    const query = Number(searchParams.get('q')) || 0;
 
 
 const router = useRouter();
 const [count, setCount] = useState(query);
 
-const urlCambio = useEffect(() => {
+useEffect(() => {
     router.replace(`/about?q=${count}`);
-}, [count]);
+}, [count, router]);
 
 
 
@@ -44,4 +42,12 @@ return (
         <GoToSearch />
     </div>
 );
+}
+
+export default function AboutPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <AboutContent />
+        </Suspense>
+    );
 }
